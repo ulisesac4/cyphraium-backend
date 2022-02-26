@@ -15,6 +15,6 @@ defmodule Api.Newsletters.Newsletter do
   def changeset(newsletter, attrs) do
     newsletter
     |> cast(attrs, [:rawContent, :htmlContent, :name, :publish_date])
-    |> validate_required([:rawContent, :htmlContent, :name, :publish_date])
+    |> validate_required([:rawContent, :name, :publish_date])
   end
 end

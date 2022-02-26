@@ -7,6 +7,8 @@ defmodule ApiWeb.Router do
 
   scope "/api", ApiWeb do
     pipe_through :api
+
+    resources "/newsletters", NewsletterController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
