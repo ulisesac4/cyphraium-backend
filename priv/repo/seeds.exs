@@ -23,6 +23,8 @@ Newsletters.create_newsletter(%{
   name: "Issue 1"
 })
 
+Process.sleep(1000)
+
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
   publish_date:
@@ -32,6 +34,8 @@ Newsletters.create_newsletter(%{
     ),
   name: "Issue 2"
 })
+
+Process.sleep(1000)
 
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
@@ -43,6 +47,8 @@ Newsletters.create_newsletter(%{
   name: "Issue 3"
 })
 
+Process.sleep(1000)
+
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
   publish_date:
@@ -52,6 +58,8 @@ Newsletters.create_newsletter(%{
     ),
   name: "Issue 4"
 })
+
+Process.sleep(1000)
 
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),

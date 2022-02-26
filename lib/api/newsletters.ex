@@ -18,7 +18,7 @@ defmodule Api.Newsletters do
 
   """
   def list_newsletters do
-    Repo.all(Newsletter)
+    Repo.all(from newsletter in Newsletter, order_by: newsletter.publish_date)
   end
 
   @doc """
