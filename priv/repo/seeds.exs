@@ -20,7 +20,8 @@ Newsletters.create_newsletter(%{
       DateTime.from_iso8601("2022-02-20T00:00:00Z") |> elem(1),
       DateTime.from_iso8601("2022-02-28T23:50:07Z") |> elem(1)
     ),
-  name: "Issue 1"
+  name: "Issue 1",
+  htmlContent: ""
 })
 
 Process.sleep(1000)
@@ -32,7 +33,8 @@ Newsletters.create_newsletter(%{
       DateTime.from_iso8601("2022-02-20T00:00:00Z") |> elem(1),
       DateTime.from_iso8601("2022-02-28T23:50:07Z") |> elem(1)
     ),
-  name: "Issue 2"
+  name: "Issue 2",
+  htmlContent: ""
 })
 
 Process.sleep(1000)
@@ -44,7 +46,8 @@ Newsletters.create_newsletter(%{
       DateTime.from_iso8601("2022-02-20T00:00:00Z") |> elem(1),
       DateTime.from_iso8601("2022-02-28T23:50:07Z") |> elem(1)
     ),
-  name: "Issue 3"
+  name: "Issue 3",
+  htmlContent: ""
 })
 
 Process.sleep(1000)
@@ -56,7 +59,8 @@ Newsletters.create_newsletter(%{
       DateTime.from_iso8601("2022-02-20T00:00:00Z") |> elem(1),
       DateTime.from_iso8601("2022-02-28T23:50:07Z") |> elem(1)
     ),
-  name: "Issue 4"
+  name: "Issue 4",
+  htmlContent: ""
 })
 
 Process.sleep(1000)
@@ -68,5 +72,6 @@ Newsletters.create_newsletter(%{
       DateTime.from_iso8601("2022-02-20T00:00:00Z") |> elem(1),
       DateTime.from_iso8601("2022-02-28T23:50:07Z") |> elem(1)
     ),
-  name: "Issue 5"
+  name: "Issue 5",
+  htmlContent: ""
 })

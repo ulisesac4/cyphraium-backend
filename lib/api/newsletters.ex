@@ -7,6 +7,7 @@ defmodule Api.Newsletters do
   alias Api.Repo
 
   alias Api.Newsletters.Newsletter
+  alias Earmark
 
   @doc """
   Returns the list of newsletters.
@@ -50,6 +51,11 @@ defmodule Api.Newsletters do
 
   """
   def create_newsletter(attrs \\ %{}) do
+    x = Earmark.as_html(attrs.rawContent) |> elem(1)
+    IO.inspect(x)
+    attrs = %{attrs | htmlContent: x}
+    IO.inspect(attrs)
+
     %Newsletter{}
     |> Newsletter.changeset(attrs)
     |> Repo.insert()
