@@ -6,6 +6,8 @@ defmodule Api.Newsletters.Newsletter do
     field :htmlContent, :string
     field :name, :string
     field :publish_date, :utc_datetime
+    field :published_date, :utc_datetime
+    field :is_published, :boolean
     field :rawContent, :string
 
     timestamps()
@@ -16,5 +18,11 @@ defmodule Api.Newsletters.Newsletter do
     newsletter
     |> cast(attrs, [:rawContent, :htmlContent, :name, :publish_date])
     |> validate_required([:rawContent, :htmlContent, :name, :publish_date])
+  end
+
+  def changeset_publish_newsletter(newsletter, attrs) do
+    newsletter
+    |> cast(attrs, [:id, :published_date, :is_published])
+    |> validate_required([:id, :published_date, :is_published])
   end
 end

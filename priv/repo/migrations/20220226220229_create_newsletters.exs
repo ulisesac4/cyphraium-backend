@@ -7,7 +7,8 @@ defmodule Api.Repo.Migrations.CreateNewsletters do
       add :htmlContent, :text
       add :name, :string
       add :publish_date, :utc_datetime
-
+      add :published_date, :utc_datetime
+      add :is_published, :boolean
       timestamps()
     end
   end
