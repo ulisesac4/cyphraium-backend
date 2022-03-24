@@ -22,6 +22,14 @@ defmodule Api.Newsletters do
     Repo.all(from newsletter in Newsletter, order_by: [desc: newsletter.publish_date])
   end
 
+  def list_unsend_newsletters do
+    Repo.all(
+      from newsletter in Newsletter,
+        order_by: [desc: newsletter.publish_date],
+        where: [is_published: false]
+    )
+  end
+
   @doc """
   Gets a single newsletter.
 

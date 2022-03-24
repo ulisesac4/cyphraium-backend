@@ -7,7 +7,7 @@ defmodule Api.Newsletters.Newsletter do
     field :name, :string
     field :publish_date, :utc_datetime
     field :published_date, :utc_datetime
-    field :is_published, :boolean
+    field :is_published, :boolean, default: false
     field :rawContent, :string
 
     timestamps()
