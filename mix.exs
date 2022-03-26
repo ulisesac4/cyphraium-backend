@@ -46,7 +46,8 @@ defmodule Api.MixProject do
       {:jason, "~> 1.2"},
       {:faker, "~> 0.17"},
       {:earmark, "~> 1.4.20"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:crontab, "~> 1.1"}
     ]
   end
 
