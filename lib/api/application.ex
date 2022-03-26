@@ -18,6 +18,7 @@ defmodule Api.Application do
       ApiWeb.Endpoint,
       # Start a worker by calling: Api.Worker.start_link(arg)
       # {Api.Worker, arg}
+      Api.Schedulers.SchedulerModule,
       Api.Schedulers.SchedulerGenserver
     ]
 
