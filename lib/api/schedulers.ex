@@ -9,6 +9,10 @@ defmodule Api.Schedulers do
 
   alias Api.Schedulers.Scheduler
   alias Crontab
+  import Crontab.CronExpression
+  alias Api.Schedulers.SchedulerModule
+  alias Calendar
+  alias DateTime
 
   def init() do
     newsletter_boosttrap()
@@ -108,16 +112,24 @@ defmodule Api.Schedulers do
     IO.inspect("Loading Newsletters...")
     newsletters = Newsletters.list_unsend_newsletters()
     # IO.inspect(newsletters)
+    # |> DateTime.add(5, :second)
+    date = DateTime.utc_now() |> DateTime.add(60, :second)
+    IO.inspect(date)
+
     x =
       Crontab.CronExpression.Composer.compose(%Crontab.CronExpression{
-        day: [25],
-        hour: [22],
-        minute: [20],
-        month: [3],
-        year: [2022]
+        month: [date.month],
+        day: [date.day],
+        hour: [date.hour],
+        minute: [date.minute],
+        year: [date.year]
       })
+      |> Crontab.CronExpression.Parser.parse()
+      |> elem(1)
 
     IO.inspect(x)
+
+    SchedulerModule.add_job({x, fn -> :ok end})
     IO.inspect("Newsletters loaded...")
   end
 end
