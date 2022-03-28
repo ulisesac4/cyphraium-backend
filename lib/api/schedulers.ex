@@ -108,15 +108,12 @@ defmodule Api.Schedulers do
   end
   """
 
-  def newsletter_boosttrap() do
-    IO.inspect("Loading Newsletters...")
-    newsletters = Newsletters.list_unsend_newsletters()
-    # IO.inspect(newsletters)
-    # |> DateTime.add(5, :second)
-    date = DateTime.utc_now() |> DateTime.add(60, :second)
-    IO.inspect(date)
+  def schedule_one_newsletter(newsletter) do
+    IO.inspect(newsletter)
 
-    x =
+    date = newsletter.publish_date
+
+    cron_expression =
       Crontab.CronExpression.Composer.compose(%Crontab.CronExpression{
         month: [date.month],
         day: [date.day],
@@ -127,9 +124,20 @@ defmodule Api.Schedulers do
       |> Crontab.CronExpression.Parser.parse()
       |> elem(1)
 
-    IO.inspect(x)
+    IO.inspect(cron_expression)
 
-    SchedulerModule.add_job({x, fn -> :ok end})
-    IO.inspect("Newsletters loaded...")
+    # code for build site
+    # code for send newsletter
+
+    SchedulerModule.add_job({cron_expression, fn -> :ok end})
+  end
+
+  def newsletter_boosttrap() do
+    IO.inspect("Loading unsent Newsletters...")
+    newsletters = Newsletters.list_unsend_newsletters()
+
+    Enum.map(newsletters, fn newsletter -> schedule_one_newsletter(newsletter) end)
+
+    IO.inspect("Unsent Newsletters loaded...")
   end
 end
