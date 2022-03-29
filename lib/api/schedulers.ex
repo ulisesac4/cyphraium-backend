@@ -98,7 +98,7 @@ defmodule Api.Schedulers do
   def command_rebuild_website() do
     now_date = DateTime.utc_now()
     IO.puts("Issuing rebuild website in #{now_date}")
-    HTTPoison.post("", {})
+    HTTPoison.post("", "{}")
   end
 
   @doc """
