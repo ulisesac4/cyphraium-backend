@@ -13,6 +13,7 @@ defmodule Api.Schedulers do
   alias Api.Schedulers.SchedulerModule
   alias Calendar
   alias DateTime
+  alias HTTPoison
 
   def init() do
     newsletter_boosttrap()
@@ -94,6 +95,12 @@ defmodule Api.Schedulers do
     end
   """
 
+  def command_rebuild_website() do
+    now_date = DateTime.utc_now()
+    IO.puts("Issuing rebuild website in #{now_date}")
+    HTTPoison.post("", {})
+  end
+
   @doc """
   Returns a data structure for tracking scheduler changes.
 
@@ -124,12 +131,11 @@ defmodule Api.Schedulers do
       |> Crontab.CronExpression.Parser.parse()
       |> elem(1)
 
-    IO.inspect(cron_expression)
-
-    # code for build site
     # code for send newsletter
 
     SchedulerModule.add_job({cron_expression, fn -> :ok end})
+    # code for build site
+    SchedulerModule.add_job({cron_expression, fn -> command_rebuild_website() end})
   end
 
   def newsletter_boosttrap() do

@@ -49,7 +49,8 @@ defmodule Api.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:crontab, "~> 1.1"},
       {:quantum, "~> 3.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:httpoison, "~> 1.7"}
     ]
   end
 
