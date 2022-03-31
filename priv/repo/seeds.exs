@@ -21,16 +21,12 @@ Newsletters.create_newsletter(%{
   htmlContent: ""
 })
 
-Process.sleep(1000)
-
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
   publish_date: DateTime.add(DateTime.utc_now(), 61, :second),
   name: "Issue 2",
   htmlContent: ""
 })
-
-Process.sleep(1000)
 
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
@@ -39,16 +35,12 @@ Newsletters.create_newsletter(%{
   htmlContent: ""
 })
 
-Process.sleep(1000)
-
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
   publish_date: DateTime.add(DateTime.utc_now(), 63, :second),
   name: "Issue 4",
   htmlContent: ""
 })
-
-Process.sleep(1000)
 
 Newsletters.create_newsletter(%{
   rawContent: Faker.Markdown.markdown(),
