@@ -3,6 +3,7 @@ defmodule ApiWeb.NewsletterController do
 
   alias Api.Newsletters
   alias Api.Newsletters.Newsletter
+  alias Api.Schedulers
 
   action_fallback ApiWeb.FallbackController
 
@@ -13,6 +14,8 @@ defmodule ApiWeb.NewsletterController do
 
   def create(conn, %{"newsletter" => newsletter_params}) do
     with {:ok, %Newsletter{} = newsletter} <- Newsletters.create_newsletter(newsletter_params) do
+      Schedulers.newsletter_boosttrap()
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.newsletter_path(conn, :show, newsletter))
@@ -28,7 +31,8 @@ defmodule ApiWeb.NewsletterController do
   def update(conn, %{"id" => id, "newsletter" => newsletter_params}) do
     newsletter = Newsletters.get_newsletter!(id)
 
-    with {:ok, %Newsletter{} = newsletter} <- Newsletters.update_newsletter(newsletter, newsletter_params) do
+    with {:ok, %Newsletter{} = newsletter} <-
+           Newsletters.update_newsletter(newsletter, newsletter_params) do
       render(conn, "show.json", newsletter: newsletter)
     end
   end

@@ -17,7 +17,9 @@ defmodule ApiWeb.NewsletterView do
       htmlContent: newsletter.htmlContent,
       name: newsletter.name,
       publish_date: newsletter.publish_date,
-      inserted_at: newsletter.inserted_at
+      inserted_at: newsletter.inserted_at,
+      is_published: newsletter.is_published,
+      publish_date: newsletter.publish_date
     }
   end
 end

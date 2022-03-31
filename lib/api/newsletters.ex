@@ -59,9 +59,10 @@ defmodule Api.Newsletters do
 
   """
   def create_newsletter(attrs \\ %{}) do
-    x = Earmark.as_html(attrs.rawContent) |> elem(1)
-    IO.inspect(x)
-    attrs = %{attrs | htmlContent: x}
+    IO.inspect(attrs)
+    x = Earmark.as_html(attrs["rawContent"]) |> elem(1)
+    # IO.inspect(x)
+    attrs = %{attrs | "htmlContent" => x}
     IO.inspect(attrs)
 
     %Newsletter{}
