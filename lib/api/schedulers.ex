@@ -133,7 +133,17 @@ defmodule Api.Schedulers do
 
     # code for send newsletter
 
-    SchedulerModule.add_job({cron_expression, fn -> :ok end})
+    SchedulerModule.add_job({cron_expression,
+     fn ->
+       # Put code here for sending emails
+       Newsletters.publish_newsletter(newsletter, %{
+         is_published: true,
+         published_date: DateTime.utc_now()
+       })
+
+       IO.puts("Newsletter #{newsletter.name} has been sent")
+     end})
+
     # code for build site
     SchedulerModule.add_job({cron_expression, fn -> command_rebuild_website() end})
   end

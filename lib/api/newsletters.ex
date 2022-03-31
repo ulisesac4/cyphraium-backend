@@ -115,4 +115,8 @@ defmodule Api.Newsletters do
   def change_newsletter(%Newsletter{} = newsletter, attrs \\ %{}) do
     Newsletter.changeset(newsletter, attrs)
   end
+
+  def publish_newsletter(%Newsletter{} = newsletter, attrs) do
+    newsletter |> Newsletter.changeset_publish_newsletter(attrs) |> Repo.update!()
+  end
 end
