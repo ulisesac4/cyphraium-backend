@@ -60,3 +60,4 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :api, frontend_url: "https://google.com"
+config :api, auth_token: "12345"

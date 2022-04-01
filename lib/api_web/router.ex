@@ -1,14 +1,33 @@
 defmodule ApiWeb.Router do
   use ApiWeb, :router
+  alias ApiWeb.AuthContent
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AuthContent
+  end
+
   scope "/api", ApiWeb do
     pipe_through :api
 
-    resources "/newsletters", NewsletterController, except: [:new, :edit]
+    # resources "/newsletters", NewsletterController, except: [:new, :edit]
+
+    get "/newsletters/:id", NewsletterController, :show
+    get "/newsletters/", NewsletterController, :index
+  end
+
+  scope "/api", ApiWeb do
+    pipe_through :api
+
+    pipe_through :auth
+
+    # resources "/newsletters", NewsletterController, except: [:new, :edit]
+    patch "/newsletters/:id", NewsletterController, :update
+    post "/newsletters", NewsletterController, :create
+    delete "/newsletters/:id", NewsletterController, :delete
   end
 
   # Enables LiveDashboard only for development

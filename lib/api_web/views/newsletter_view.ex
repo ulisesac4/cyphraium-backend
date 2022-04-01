@@ -22,4 +22,8 @@ defmodule ApiWeb.NewsletterView do
       published_date: newsletter.publish_date
     }
   end
+
+  def render("unauthorized.json", _) do
+    %{message: "unauthorized"}
+  end
 end
