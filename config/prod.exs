@@ -49,3 +49,9 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
+config :mailchimp,
+  api_key:
+    System.get_env("MAILCHIMP_KEY") ||
+      raise("""
+      environment variable MAILCHIMP_KEY is missing.
+      """)
