@@ -17,6 +17,9 @@ defmodule ApiWeb.Router do
 
     get "/newsletters/:id", NewsletterController, :show
     get "/newsletters/", NewsletterController, :index
+
+    get "/templates/:id", TemplateController, :show
+    get "/templates/", TemplateController, :index
   end
 
   scope "/api", ApiWeb do
@@ -28,6 +31,10 @@ defmodule ApiWeb.Router do
     patch "/newsletters/:id", NewsletterController, :update
     post "/newsletters", NewsletterController, :create
     delete "/newsletters/:id", NewsletterController, :delete
+
+    patch "/templates/:id", NewsletterController, :update
+    post "/templates", NewsletterController, :create
+    delete "/templates/:id", NewsletterController, :delete
   end
 
   # Enables LiveDashboard only for development

@@ -13,6 +13,7 @@
 alias Api.Newsletters
 alias Faker
 alias DateTime
+alias Api.Templates
 
 Newsletters.create_newsletter(%{
   "rawContent" => Faker.Markdown.markdown(),
@@ -29,4 +30,5 @@ Newsletters.create_newsletter(%{
 })
 
 template1 = File.read!("priv/repo/base_template_v1.html")
-IO.inspect(template1)
+# IO.inspect(String.first())
+Templates.create_template(%{"name" => "Newsletter v1", "content" => template1})
