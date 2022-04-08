@@ -11,17 +11,6 @@ defmodule Api.Email do
     Mailchimp.List.members(list, %{})
   end
 
-  def send_email(email, content) do
-    IO.inspect("About to send email to ")
-  end
-
-  def send_emails(emails, content) do
-    IO.inspect("About to send the newsletter")
-
-    Enum.map(emails, fn email -> send_email(email, content) end)
-    IO.inspect("Newsletter sent")
-  end
-
   def send_newsletter_to_cyphraium(content) do
     list =
       get_all_lists()
