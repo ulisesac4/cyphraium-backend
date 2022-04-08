@@ -15,6 +15,14 @@ alias Faker
 alias DateTime
 alias Api.Templates
 
+IO.puts("Start creating templates")
+template1 = File.read!("priv/repo/base_template_v1.html")
+# IO.inspect(String.first())
+Templates.create_template(%{"name" => "Newsletter v1", "content" => template1})
+IO.puts("End creating templates")
+
+IO.puts("Start adding newsletters")
+
 Newsletters.create_newsletter(%{
   "rawContent" => Faker.Markdown.markdown(),
   "publish_date" => DateTime.add(DateTime.utc_now(), -60, :second),
@@ -29,6 +37,4 @@ Newsletters.create_newsletter(%{
   "htmlContent" => ""
 })
 
-template1 = File.read!("priv/repo/base_template_v1.html")
-# IO.inspect(String.first())
-Templates.create_template(%{"name" => "Newsletter v1", "content" => template1})
+IO.puts("End adding newsletters")
