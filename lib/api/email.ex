@@ -1,6 +1,7 @@
 defmodule Api.Email do
   alias Mailchimp
   alias Api.Templates
+  alias HTTPoison
 
   def get_all_lists() do
     Mailchimp.Account.get() |> elem(1) |> Mailchimp.Account.lists()
@@ -40,5 +41,14 @@ defmodule Api.Email do
           template_id: template.id
         }
       })
+      |> elem(1)
+
+    HTTPoison.post(
+      "#{Application.get_env(:api, :mailchimp_api_base_url)}/campaigns/#{campaign.id}/actions/send",
+      "{}",
+      [
+        {"Authorization", "Basic #{Application.get_env(:mailchimp, :api_key)}"}
+      ]
+    )
   end
 end
