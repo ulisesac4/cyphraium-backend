@@ -133,19 +133,33 @@ defmodule Api.Schedulers do
 
     # code for send newsletter
 
-    SchedulerModule.add_job({cron_expression,
-     fn ->
-       # Put code here for sending emails
-       command_rebuild_website()
-       Email.send_newsletter_to_cyphraium(newsletter)
+    res = Date.compare(date, Date.utc_today())
+    IO.inspect(res)
 
-       Newsletters.publish_newsletter(newsletter, %{
-         is_published: true,
-         published_date: DateTime.utc_now()
-       })
+    if(res === :lt or res === :eq) do
+      Email.send_newsletter_to_cyphraium(newsletter)
 
-       IO.puts("Newsletter #{newsletter.name} has been sent")
-     end})
+      Newsletters.publish_newsletter(newsletter, %{
+        is_published: true,
+        published_date: DateTime.utc_now()
+      })
+
+      IO.puts("Newsletter #{newsletter.name} has been sent")
+    else
+      SchedulerModule.add_job({cron_expression,
+       fn ->
+         # Put code here for sending emails
+         command_rebuild_website()
+         Email.send_newsletter_to_cyphraium(newsletter)
+
+         Newsletters.publish_newsletter(newsletter, %{
+           is_published: true,
+           published_date: DateTime.utc_now()
+         })
+
+         IO.puts("Newsletter #{newsletter.name} has been sent")
+       end})
+    end
   end
 
   def newsletter_boosttrap() do
