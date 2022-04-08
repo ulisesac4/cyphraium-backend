@@ -39,7 +39,7 @@ defmodule Api.Email do
     template = Templates.upload_to_mailchimp(content.name, content.htmlContent) |> elem(1)
 
     campaign =
-      Mailchimp.Campaign.create("regular", %{
+      Mailchimp.Campaign.create(:regular, %{
         recipients: %{list_id: list.id},
         settings: %{
           title: content.name,
