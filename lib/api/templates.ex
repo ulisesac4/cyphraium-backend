@@ -103,6 +103,10 @@ defmodule Api.Templates do
   end
 
   def upload_to_mailchimp(name, html) do
-    Mailchimp.Template.create(%{name: name, html: html})
+    template_skeleton = get_template!(1)
+    add_title = String.replace(template_skeleton.content, "&gt;TITLE&lt;", name)
+    add_body = String.replace(add_title, "&gt;CONTENT&lt;", html)
+
+    Mailchimp.Template.create(%{name: name, html: add_body})
   end
 end

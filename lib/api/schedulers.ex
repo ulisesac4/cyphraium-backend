@@ -6,7 +6,7 @@ defmodule Api.Schedulers do
   import Ecto.Query, warn: false
   alias Api.Repo
   alias Api.Newsletters
-
+  alias Api.Email
   alias Api.Schedulers.Scheduler
   alias Crontab
   import Crontab.CronExpression
@@ -136,6 +136,9 @@ defmodule Api.Schedulers do
     SchedulerModule.add_job({cron_expression,
      fn ->
        # Put code here for sending emails
+       command_rebuild_website()
+       Email.send_newsletter_to_cyphraium(newsletter)
+
        Newsletters.publish_newsletter(newsletter, %{
          is_published: true,
          published_date: DateTime.utc_now()
@@ -143,9 +146,6 @@ defmodule Api.Schedulers do
 
        IO.puts("Newsletter #{newsletter.name} has been sent")
      end})
-
-    # code for build site
-    SchedulerModule.add_job({cron_expression, fn -> command_rebuild_website() end})
   end
 
   def newsletter_boosttrap() do
