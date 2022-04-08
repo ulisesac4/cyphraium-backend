@@ -23,7 +23,7 @@ defmodule Api.Email do
       Mailchimp.Campaign.create(:regular, %{
         recipients: %{list_id: list.id},
         settings: %{
-          from_name: "Cyphraium",
+          from_name: "Cyphraium's Newsletter",
           reply_to: "info@cyphraium.com",
           title: content.name,
           subject_line: content.name,
