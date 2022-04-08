@@ -62,6 +62,13 @@ config :phoenix, :plug_init_mode, :runtime
 config :api, frontend_url: "https://google.com"
 config :api, auth_token: "12345"
 
+config :api,
+  mailchimp_api_base_url:
+    System.get_env("MAILCHIMP_URL") ||
+      raise("""
+      environment variable MAILCHIMP_URL is missing.
+      """)
+
 config :mailchimp,
   api_key:
     System.get_env("MAILCHIMP_KEY") ||

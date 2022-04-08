@@ -55,3 +55,10 @@ config :mailchimp,
       raise("""
       environment variable MAILCHIMP_KEY is missing.
       """)
+
+config :api,
+  mailchimp_api_base_url:
+    System.get_env("MAILCHIMP_URL") ||
+      raise("""
+      environment variable MAILCHIMP_URL is missing.
+      """)
