@@ -5,7 +5,7 @@ defmodule Api.Templates do
 
   import Ecto.Query, warn: false
   alias Api.Repo
-
+  alias Mailchimp
   alias Api.Templates.Template
 
   @doc """
@@ -100,5 +100,9 @@ defmodule Api.Templates do
   """
   def change_template(%Template{} = template, attrs \\ %{}) do
     Template.changeset(template, attrs)
+  end
+
+  def upload_to_mailchimp(name, html) do
+    Mailchimp.Template.create(%{name: name, html: html})
   end
 end
