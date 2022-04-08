@@ -27,3 +27,6 @@ Newsletters.create_newsletter(%{
   "name" => "Issue 2",
   "htmlContent" => ""
 })
+
+template1 = File.read!("priv/repo/base_template_v1.html")
+IO.inspect(template1)
