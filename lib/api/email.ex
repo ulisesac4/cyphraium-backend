@@ -22,15 +22,6 @@ defmodule Api.Email do
   end
 
   def send_newsletter_to_cyphraium(content) do
-    """
-    get_all_lists()
-    |> elem(1)
-    |> Enum.find(fn element -> element.name === "Cyphraium" end)
-    |> get_all_contacts_from_a_list()
-    |> elem(1)
-    |> send_emails("a testo")
-    """
-
     list =
       get_all_lists()
       |> elem(1)
@@ -42,6 +33,8 @@ defmodule Api.Email do
       Mailchimp.Campaign.create(:regular, %{
         recipients: %{list_id: list.id},
         settings: %{
+          from_name: "Cyphraium",
+          reply_to: "info@cyphraium.com",
           title: content.name,
           subject_line: content.name,
           template_id: template.id
