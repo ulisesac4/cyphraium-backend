@@ -16,7 +16,7 @@ alias DateTime
 
 Newsletters.create_newsletter(%{
   "rawContent" => Faker.Markdown.markdown(),
-  "publish_date" => DateTime.add(DateTime.utc_now(), 60, :second),
+  "publish_date" => DateTime.add(DateTime.utc_now(), -60, :second),
   "name" => "Issue 1",
   "htmlContent" => ""
 })
@@ -25,26 +25,5 @@ Newsletters.create_newsletter(%{
   "rawContent" => Faker.Markdown.markdown(),
   "publish_date" => DateTime.add(DateTime.utc_now(), 61, :second),
   "name" => "Issue 2",
-  "htmlContent" => ""
-})
-
-Newsletters.create_newsletter(%{
-  "rawContent" => Faker.Markdown.markdown(),
-  "publish_date" => DateTime.add(DateTime.utc_now(), 62, :second),
-  "name" => "Issue 3",
-  "htmlContent" => ""
-})
-
-Newsletters.create_newsletter(%{
-  "rawContent" => Faker.Markdown.markdown(),
-  "publish_date" => DateTime.add(DateTime.utc_now(), 63, :second),
-  "name" => "Issue 4",
-  "htmlContent" => ""
-})
-
-Newsletters.create_newsletter(%{
-  "rawContent" => Faker.Markdown.markdown(),
-  "publish_date" => DateTime.add(DateTime.utc_now(), 64, :second),
-  "name" => "Issue 5",
   "htmlContent" => ""
 })
