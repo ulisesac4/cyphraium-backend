@@ -17,7 +17,7 @@ defmodule Api.Email do
       |> elem(1)
       |> Enum.find(fn element -> element.name === "Cyphraium" end)
 
-    template = Templates.upload_to_mailchimp(content.name, content.htmlContent) |> elem(1)
+    template = Templates.upload_to_mailchimp(content.campaignName, content.htmlContent) |> elem(1)
 
     campaign =
       Mailchimp.Campaign.create(:regular, %{
@@ -25,8 +25,8 @@ defmodule Api.Email do
         settings: %{
           from_name: "Cyphraium's Newsletter",
           reply_to: "info@cyphraium.com",
-          title: content.name,
-          subject_line: content.name,
+          title: content.campaignName,
+          subject_line: content.campaignName,
           template_id: template.id
         }
       })

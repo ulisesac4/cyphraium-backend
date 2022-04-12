@@ -5,6 +5,7 @@ defmodule Api.Newsletters.Newsletter do
   schema "newsletters" do
     field :htmlContent, :string
     field :name, :string
+    field :campaignName, :string
     field :publish_date, :utc_datetime
     field :published_date, :utc_datetime
     field :is_published, :boolean, default: false
@@ -16,8 +17,8 @@ defmodule Api.Newsletters.Newsletter do
   @doc false
   def changeset(newsletter, attrs) do
     newsletter
-    |> cast(attrs, [:rawContent, :htmlContent, :name, :publish_date])
-    |> validate_required([:rawContent, :htmlContent, :name, :publish_date])
+    |> cast(attrs, [:rawContent, :htmlContent, :name, :publish_date, :campaignName])
+    |> validate_required([:rawContent, :htmlContent, :name, :publish_date, :campaignName])
   end
 
   def changeset_publish_newsletter(newsletter, attrs) do

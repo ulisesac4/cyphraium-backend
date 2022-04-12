@@ -6,6 +6,7 @@ defmodule Api.Repo.Migrations.CreateNewsletters do
       add :rawContent, :text
       add :htmlContent, :text
       add :name, :string
+      add :campaignName, :string
       add :publish_date, :utc_datetime
       add :published_date, :utc_datetime
       add :is_published, :boolean, default: false, null: false

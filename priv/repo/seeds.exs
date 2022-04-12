@@ -24,6 +24,7 @@ IO.puts("End creating templates")
 IO.puts("Start adding newsletters")
 
 Newsletters.create_newsletter(%{
+  "campaignName" => "Issue 1",
   "htmlContent" => "",
   "name" =>
     "Issue 1, Suspension in Rusia and India, NFTs start to go to the food industry, Problems with crypto carbon footprint",
