@@ -6,10 +6,9 @@ After=local-fs.target network.target
 Type=simple
 User=meddicit
 Group=meddicit
-WorkingDirectory=/var/apps/meddicit/rel/backend
-ExecStart=/var/apps/meddicit/rel/backend/bin/backend start
-ExecStop=/var/apps/meddicit/rel/backend/bin/backend stop
-EnvironmentFile=/etc/default/meddicit.env
+WorkingDirectory=/var/apps/cyphraium/rel/backend
+ExecStart=/var/apps/cyphraium/rel/backend/bin/backend start
+ExecStop=/var/apps/cyphraium/rel/backend/bin/backend stop
 Environment=LANG=en_US.utf8
 Environment=MIX_ENV=prod
 
