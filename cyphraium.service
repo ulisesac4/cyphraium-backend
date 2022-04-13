@@ -1,0 +1,25 @@
+[Unit]
+Description=Meddicit service
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+User=meddicit
+Group=meddicit
+WorkingDirectory=/var/apps/meddicit/rel/backend
+ExecStart=/var/apps/meddicit/rel/backend/bin/backend start
+ExecStop=/var/apps/meddicit/rel/backend/bin/backend stop
+EnvironmentFile=/etc/default/meddicit.env
+Environment=LANG=en_US.utf8
+Environment=MIX_ENV=prod
+
+
+Environment=PORT=80
+LimitNOFILE=65535
+UMask=0027
+SyslogIdentifier=meddicit
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
