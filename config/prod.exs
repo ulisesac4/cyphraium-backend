@@ -15,8 +15,17 @@ config :api, ApiWeb.Endpoint,
       raise("""
       environment variable DB_LOCATION is missing.
       """),
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "cyphraium.com", port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  https: [
+    port: 443,
+    cipher_suite: :strong,
+    otp_app: :api,
+    keyfile: System.get_env("SSL_KEY_PATH"),
+    certfile: System.get_env("SSL_CERT_PATH"),
+    # OPTIONAL Key for intermediate certificates:
+    cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
