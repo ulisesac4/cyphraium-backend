@@ -27,6 +27,7 @@ _build/prod/rel/api/bin/api eval "Api.Release.migrate"
 # Copy service to place
 sudo cp cyphraium.service /etc/systemd/system/
 sudo chown -R cyphraium:cyphraium /var/apps/cyphraium
+sudo systemctl daemon-reload
 
 # Let binary to bind port 80
 
