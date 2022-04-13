@@ -4,6 +4,10 @@ sudo certbot certonly --standalone -d cyphraium.com  --agree-tos
 # stop app
 sudo systemctl stop cyphraium.service 
 
+#remove old certs
+
+sudo rm -rf /home/cyphraium/Application/Cyphraium/certs/*
+
 # copy certs to neccesary folder
 sudo cp /etc/letsencrypt/live/cyphraium.com/* /home/cyphraium/Application/Cyphraium/certs
 
