@@ -19,15 +19,15 @@ sudo cp -rf _build/prod/* /var/apps/cyphraium
 
 
 # Perform any migrations necessary
-_build/prod/rel/backend/bin/backend eval "Backend.Release.migrate"
+_build/prod/rel/api/bin/api eval "Api.Release.migrate"
 
 # Copy env vars to palce
-#sudo cp meddicit.env /etc/default/
+#sudo cp cyphraium.env /etc/default/
 
 # Copy service to place
-sudo cp meddicit.service /etc/systemd/system/
-sudo chown -R meddicit:meddicit /var/apps/meddicit
+sudo cp cyphraium.service /etc/systemd/system/
+sudo chown -R cyphraium:cyphraium /var/apps/cyphraium
 
 # Let binary to bind port 80
 
-sudo setcap "cap_net_bind_service=+ep" /var/apps/meddicit/rel/backend/erts-11.0.3/bin/beam.smp
+sudo setcap "cap_net_bind_service=+ep" /var/apps/cyphraium/rel/api/erts-11.0.3/bin/beam.smp

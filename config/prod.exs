@@ -63,6 +63,21 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
+
+config :api,
+  frontend_url:
+    System.get_env("FRONTEND_URL") ||
+      raise("""
+      environment variable FRONTEND_URL is missing.
+      """)
+
+config :api,
+  auth_token:
+    System.get_env("AUTH_TOKEN") ||
+      raise("""
+      environment variable AUTH_TOKEN is missing.
+      """)
+
 config :mailchimp,
   api_key:
     System.get_env("MAILCHIMP_KEY") ||
