@@ -18,8 +18,7 @@ sudo cp -rf _build/prod/* /var/apps/cyphraium
 
 
 
-# Perform any migrations necessary
-_build/prod/rel/api/bin/api eval "Api.Release.migrate"
+
 
 # Copy env vars to palce
 sudo cp cyphraium.env /etc/default/
@@ -28,6 +27,9 @@ sudo cp cyphraium.env /etc/default/
 sudo cp cyphraium.service /etc/systemd/system/
 sudo chown -R cyphraium:cyphraium /var/apps/cyphraium
 sudo systemctl daemon-reload
+
+# Perform any migrations necessary
+_build/prod/rel/api/bin/api eval "Api.Release.migrate"
 
 # Let binary to bind port 80
 
