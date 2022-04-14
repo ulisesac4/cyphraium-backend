@@ -21,7 +21,7 @@ sudo cp -rf _build/prod/* /var/apps/cyphraium
 
 
 # Copy env vars to palce
-sudo cp cyphraium.env /etc/default/
+#sudo cp cyphraium.env /etc/default/
 
 # Copy service to place
 sudo cp cyphraium.service /etc/systemd/system/
