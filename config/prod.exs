@@ -15,7 +15,7 @@ config :api, ApiWeb.Endpoint,
       raise("""
       environment variable DB_LOCATION is missing.
       """),
-  url: [host: "cyphraium.com", port: 80],
+  url: [host: "cyphraium.com", port: String.to_integer(System.get_env("PORT") || "4000")],
   cache_static_manifest: "priv/static/cache_manifest.json",
   https: [
     port: 443,
