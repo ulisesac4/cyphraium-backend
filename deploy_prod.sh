@@ -33,4 +33,4 @@ _build/prod/rel/api/bin/api eval "Api.Release.migrate"
 
 # Let binary to bind port 80
 
-sudo setcap "cap_net_bind_service=+ep" /var/apps/cyphraium/rel/api/erts-12.3/bin/beam.smp
+sudo setcap "cap_net_bind_service=+ep" /var/apps/cyphraium/rel/api/erts-12.3.1/bin/beam.smp
