@@ -22,7 +22,7 @@ sudo cp -rf _build/prod/* /var/apps/cyphraium
 _build/prod/rel/api/bin/api eval "Api.Release.migrate"
 
 # Copy env vars to palce
-#sudo cp cyphraium.env /etc/default/
+sudo cp cyphraium.env /etc/default/
 
 # Copy service to place
 sudo cp cyphraium.service /etc/systemd/system/
