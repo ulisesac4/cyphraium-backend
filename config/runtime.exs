@@ -8,9 +8,9 @@ import Config
 # The block below contains prod specific runtime configuration.
 if config_env() == :prod do
   database_path =
-    System.get_env("DATABASE_PATH") ||
+    System.get_env("DB_LOCATION") ||
       raise """
-      environment variable DATABASE_PATH is missing.
+      environment variable DB_LOCATION is missing.
       For example: /etc/api/api.db
       """
 
