@@ -9,7 +9,7 @@ sudo systemctl stop cyphraium.service
 sudo rm -rf /home/cyphraium/Application/Cyphraium/certs/.
 
 # copy certs to neccesary folder
-sudo cp /etc/letsencrypt/live/cyphraium.com/. /home/cyphraium/Application/Cyphraium/certs
+sudo cp /etc/letsencrypt/archive/cyphraium.com/. /home/cyphraium/Application/Cyphraium/certs
 
 # do not forget to change permissions
 sudo chown -R cyphraium:cyphraium /home/cyphraium/Application/Cyphraium/certs
