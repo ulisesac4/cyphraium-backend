@@ -1,5 +1,5 @@
 [Unit]
-Description=Meddicit service
+Description=Cyphraium service
 After=local-fs.target network.target
 
 [Service]
