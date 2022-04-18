@@ -16,9 +16,10 @@ config :api, ApiWeb.Endpoint,
       environment variable DB_LOCATION is missing.
       """),
   url: [
-    host: "cyphraium.com",
+    host: "api.cyphraium.com",
     port: 443,
-    scheme: "https",   force_ssl: [rewrite_on: [:x_forwarded_proto]]
+    scheme: "https",
+    force_ssl: [rewrite_on: [:x_forwarded_proto]]
   ],
   cache_static_manifest: "priv/static/cache_manifest.json",
   http: [port: 80],
@@ -27,9 +28,9 @@ config :api, ApiWeb.Endpoint,
     cipher_suite: :strong,
     otp_app: :api,
     keyfile: System.get_env("SSL_KEY_PATH"),
-    certfile: System.get_env("SSL_CERT_PATH"),
+    certfile: System.get_env("SSL_CERT_PATH")
     # OPTIONAL Key for intermediate certificates:
-    #cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
+    # cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
   ]
 
 # Do not print debug messages in production
