@@ -17,8 +17,8 @@ config :api, ApiWeb.Endpoint,
       """),
   url: [
     host: "cyphraium.com",
-    port: String.to_integer(System.get_env("PORT") || "4000"),
-    scheme: "https"
+    port: 443,
+    scheme: "https",   force_ssl: [rewrite_on: [:x_forwarded_proto]]
   ],
   cache_static_manifest: "priv/static/cache_manifest.json",
   http: [port: 80],
@@ -29,7 +29,7 @@ config :api, ApiWeb.Endpoint,
     keyfile: System.get_env("SSL_KEY_PATH"),
     certfile: System.get_env("SSL_CERT_PATH"),
     # OPTIONAL Key for intermediate certificates:
-    cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
+    #cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
   ]
 
 # Do not print debug messages in production
