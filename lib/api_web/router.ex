@@ -32,9 +32,9 @@ defmodule ApiWeb.Router do
     post "/newsletters", NewsletterController, :create
     delete "/newsletters/:id", NewsletterController, :delete
 
-    patch "/templates/:id", NewsletterController, :update
-    post "/templates", NewsletterController, :create
-    delete "/templates/:id", NewsletterController, :delete
+    patch "/templates/:id", TemplateController, :update
+    post "/templates", TemplateController, :create
+    delete "/templates/:id", TemplateController, :delete
   end
 
   # Enables LiveDashboard only for development
