@@ -1,5 +1,5 @@
 # generate certs
-sudo certbot certonly -d cyphraium.com 
+sudo certbot certonly -d api.cyphraium.com 
 
 # stop app
 sudo systemctl stop cyphraium.service 
